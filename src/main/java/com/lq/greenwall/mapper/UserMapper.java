@@ -8,12 +8,10 @@ import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 
 public interface UserMapper extends BaseMapper<User> {
-    @Select("select * from user where id=#{id}")
+    @Select("select * from user where username=#{username}")
     @Results({
             @Result(property = "devices",column = "id",
                     many = @Many(select = "com.lq.greenwall.mapper.DeviceMapper.findDevicesByUid"))
     })
-    public User findUserById(int id);
-    @Select("select * from user where username=#{username}")
-    public User findUserByUsername(String username);
+    public User selectUserByUsername(String username);
 }

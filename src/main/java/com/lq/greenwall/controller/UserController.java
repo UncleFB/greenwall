@@ -2,7 +2,9 @@ package com.lq.greenwall.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.additional.query.impl.QueryChainWrapper;
+import com.lq.greenwall.entity.Device;
 import com.lq.greenwall.entity.User;
+import com.lq.greenwall.mapper.DeviceMapper;
 import com.lq.greenwall.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,6 +19,8 @@ public class UserController {
 
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    DeviceMapper deviceMapper;
 
     /**
      * 获取所有用户
@@ -27,45 +31,9 @@ public class UserController {
         return userMapper.selectList(null);
     }
 
-    /**
-     * 根据id获取用户
-     * @param id
-     * @return
-     */
-    @RequestMapping("getuser")
-    public User getUserById(int id){
-        return userMapper.findUserById(id);
-    }
 
-    /**
-     * 注册用户
-     * @param user
-     * @return
-     */
-    @RequestMapping("register")
-    public int addUser(User user){
-        User one = userMapper.findUserByUsername(user.getUsername());
-        if(one!=null){
-            return 0;
-        }else{
-            return userMapper.insert(user);
-        }
-    }
 
-    /**
-     * 登陆
-     * @param user
-     * @return
-     */
-    @RequestMapping("login")
-    public User login(User user){
-        User one = userMapper.findUserByUsername(user.getUsername());
-        if(one.getPassword().equals(user.getPassword())){
-            return one;
-        }else{
-            return null;
-        }
-    }
+
 
     /**
      * 更新用户

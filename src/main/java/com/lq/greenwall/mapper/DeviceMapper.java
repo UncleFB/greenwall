@@ -3,7 +3,6 @@ package com.lq.greenwall.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lq.greenwall.entity.Device;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

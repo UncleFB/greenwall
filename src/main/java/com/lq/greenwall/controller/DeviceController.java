@@ -1,10 +1,9 @@
 package com.lq.greenwall.controller;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.segments.MergeSegments;
 import com.lq.greenwall.entity.Device;
+import com.lq.greenwall.entity.User;
 import com.lq.greenwall.mapper.DeviceMapper;
+import com.lq.greenwall.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +14,8 @@ import java.util.List;
 public class DeviceController {
     @Autowired
     DeviceMapper deviceMapper;
+    @Autowired
+    UserMapper userMapper;
 
     @RequestMapping("getdevices")
     public List<Device> getDevices(){
@@ -24,10 +25,7 @@ public class DeviceController {
     public Device getDevice(int id){
         return deviceMapper.selectById(id);
     }
-    @RequestMapping("adddevice")
-    public int addDevice(Device device){
-        return deviceMapper.insert(device);
-    }
+
     @RequestMapping("upddevice")
     public int updDevice(Device device){
         return deviceMapper.updateById(device);

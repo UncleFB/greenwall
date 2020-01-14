@@ -1,9 +1,15 @@
 server:
-  port: 8080
+  port: 443
+  ssl:
+    key-store: api.greenwall.mobi.jks
+    key-store-password: 96nvpu6b56bgj
 
 spring:
   datasource:
     username: root
-    password: 123456
-    url: jdbc:mysql://111.229.32.98:3306/lq?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    password: Bupt908.
+    url: jdbc:mysql://112.126.70.157:3306/lq?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  mapper-locations: classpath:/mapper/

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lq.greenwall.mapper.UserMapper">
+    <resultMap type="com.lq.greenwall.entity.User" id="userResult">
+        <id property="id" column="id"></id>
+        <collection property="devices" column="id" javaType="list" select="com.lq.greenwall.mapper.DeviceMapper.findDevicesByUid"/>
+    </resultMap>
+    <select id="selectUserByUsername" resultMap="userResult">
+        select * from user where username = #{username}
+    </select>
+</mapper>

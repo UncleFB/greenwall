@@ -12,14 +12,12 @@ import java.sql.Timestamp;
 public class Device {
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private String ip;
     private Integer uid;
-    private Integer port;
     private boolean switch1;
     private boolean switch2;
     private boolean switch3;
     private String num1;
     private String num2;
     private String num3;
-    private Timestamp time;
+    private String mac;
 }
